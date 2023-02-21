@@ -1,0 +1,23 @@
+# Answer the following questions for the Zillow assignment
+
+1. Which models did you try, and how did they compare? If you only tried one model, why did you choose this model?
+
+I have tried random forest, Support Vector Regressor, and Gradient Boosting Regressor. They have the MAE of 0.069, 0.092, and 0.068, respectively. 
+
+2. Choose three numeric fields and examine the distribution of those fields. Based on your observations, what kind of distribution did you find, and what steps would you take, if any, to prepare the data in those fields?
+
+There are many columns with missing values, so I use the discovered distribution to make appropriate arrangements accordingly. The 'poolcnt' column has values all packed together at value one, so I guessed that 1 means the house that has a pool and filled all the NAs with 0. The column 'bathroomcnt' is distributed more discretely, and almost all data points are packed with 1 to 5, which makes sense. Therefore, I filled all the NAs with the column median, so there won't be any value with the bathroom count of decimal points. The column 'buildingqualitytypeid' is also distributed discretely but does not necessarily have a dominant value; therefore, I fill the NAs with the proportion that each value appears in the column to keep the proportion of each value in the column steady.  
+
+3. What was your final score, and what steps would you attribute to improving your score during data preparation, model selection, or parameter tuning?
+
+My final score is around 0.068. I spent 80% of my time dealing with NAs and cleaning the data. I looked at the distribution, the describe(), and the column description in excel to understand every column and their potential relationship without a goal. I also looked at their correlation with one another and dropped out those which has a strong correlation with many other similar columns. Then I impute missing values but drop off some columns that have missing values of more than 99%. After imputation, I did some data preprocessing, like categorical encoding. Then split the data into 49/51 and fit the data into three kinds of models. I compared the MAE of three models and chose the random forest and gradient boosting regressor for deeper parameter tuning. I used grid search and permutation importance to check for the best model that gives me the best MAE and the least calculation time.
+
+If you used AI assistants such as Copilot & ChapGPT:
+
+- Which AI tools did you use, and for what part of the solution?
+
+I used ChatGPT for the concept clarifications and bug identifiers. I am not familiar with the process of fitting the models that I used in this project, and it's also the first time I utilized permutation importance, so I relied on ChatGPT to clear my confusion about these concepts and provide me with some example code.
+
+- Optional: share any reflection on using such tools. For instance, did they contribute to your learning? Were they more helpful than harmful? Did you notice any mistakes in their outputs?
+
+It boosts my efficiency in learning since I do not need to look for resources online and check for correctness. However, it is a double-edged sword. Most of the time, it is super helpful in clarifying things and provides easy-to-understand examples, but there is a time when the code it gave out is outdated, and it ends up throwing errors, so I would have to check it out online manually.
